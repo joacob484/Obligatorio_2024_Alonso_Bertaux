@@ -1,2 +1,2 @@
-public class Queue {
+public class Queue <T>{
 }

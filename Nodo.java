@@ -3,8 +3,8 @@ public class Nodo <T>{
     private Nodo <T> next;
     private Nodo <T> anterior;
 
-
-
+    public Nodo(T value) {
+    }
 
 
     public T getValue() {

@@ -1,4 +1,4 @@
-public interface MyArbolInterface <K extends Comparable<K>,T>{
+public interface MyArbolInterface <K,T>{
 
     T find (K key);
     void inseert(K key, T data);

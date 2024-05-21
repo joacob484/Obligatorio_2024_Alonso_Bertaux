@@ -13,7 +13,6 @@ public class ArbolBinario <K extends Comparable<K>,T> implements MyArbolInterfac
 
     @Override
     public void inseert(K key, T data) {
-
     }
 
     @Override

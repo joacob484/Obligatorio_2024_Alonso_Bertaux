@@ -26,23 +26,6 @@ public class ListaDoblementeEnlazada <T> implements ListaEnlazadaInterface<T> {
             primero = new Nodo<>(value);
     }
 
-    @Override
-    public void remove(int posicion) {
-        if (primero != null){
-            Nodo<T> temp = primero;
-            for (int i = 0; i < posicion; i++) {
-                temp = temp.getNext();
-            }
-            if (temp.getNext().getNext() != null){
-                temp.setNext(temp.getNext().getNext());
-                temp.getNext().getNext().setAnterior(temp);
-            }
-            else
-                temp.setNext(null);
-        }
-
-        Length = Length -1;
-    }
 
     @Override
     public T get(int position) {
@@ -54,6 +37,16 @@ public class ListaDoblementeEnlazada <T> implements ListaEnlazadaInterface<T> {
             return temp.getValue();
         }
         return null;
+    }
+
+    @Override
+    public boolean contains(T value) {
+        return false;
+    }
+
+    @Override
+    public void remove(T value) {
+
     }
 
     public int size(){

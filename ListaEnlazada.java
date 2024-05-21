@@ -1,7 +1,14 @@
 public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInterface<T>{
 
     public Nodo <T> primero;
+    public Nodo <T> ultimo;
     public int Length;
+
+    public ListaEnlazada() {
+        this.primero = null;
+        this.ultimo = null;
+        Length = 0;
+    }
 
     @Override
     public void add(T value) {
@@ -45,6 +52,48 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         }
         return null;
     }
+
+    private void agergarPrimero(T value) {
+        if (value != null) {
+
+            Nodo<T> elementToAdd = new Nodo<>(value);
+
+            if (this.primero == null) {
+
+                this.primero = elementToAdd;
+                this.ultimo = elementToAdd;
+
+            } else {
+
+                elementToAdd.setNext(this.primero);
+                this.primero = elementToAdd;
+            }
+
+        } else {
+        }
+    }
+
+    private void addToTheEnd(T value) {
+        if (value != null) {
+
+            Nodo<T> elementToAdd = new Nodo<>(value);
+
+            if (this.primero == null) {
+
+                this.primero = elementToAdd;
+                this.ultimo = elementToAdd;
+
+            } else {
+
+                this.ultimo.setNext(elementToAdd);
+                this.ultimo = elementToAdd;
+            }
+
+        } else {
+
+        }
+    }
+
 
 
 }

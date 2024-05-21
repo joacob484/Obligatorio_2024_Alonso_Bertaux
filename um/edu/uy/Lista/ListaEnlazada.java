@@ -1,5 +1,7 @@
 package um.edu.uy.Lista;
 
+import um.edu.uy.Nodo;
+
 public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInterface<T> {
 
     public Nodo<T> primero;

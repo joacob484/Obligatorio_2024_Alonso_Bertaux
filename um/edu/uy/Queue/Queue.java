@@ -1,6 +1,7 @@
 package um.edu.uy.Queue;
 
 import um.edu.uy.Lista.ListaDoblementeEnlazada;
+import um.edu.uy.Nodo;
 
 public class Queue <T> implements MyQueueInterface<T> {
 

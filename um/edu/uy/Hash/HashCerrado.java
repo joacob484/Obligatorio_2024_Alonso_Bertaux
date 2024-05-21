@@ -1,3 +1,5 @@
+package um.edu.uy.Hash;
+
 public class HashCerrado<K,V> implements MyHashInterface<K,V> {
 
 

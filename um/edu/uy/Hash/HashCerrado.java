@@ -32,7 +32,7 @@ public int capacity;
             resize();
         }
         else{
-            int pos = key.hashCode() % size;
+            int pos = key.hashCode() % capacity;
             NodoHash<K, V> nodoAgregado = new NodoHash<>(key, value);
             if (tablahash[pos] == null) {
                 tablahash[pos] = nodoAgregado;
@@ -48,11 +48,25 @@ public int capacity;
 
     @Override
     public boolean contains(K key) {
+        int pos = key.hashCode() % capacity;
+        while (tablahash[pos] != null){
+            if(tablahash[pos].getKey().equals(key)){
+                return true;
+            }
+            pos = pos +1;
+        }
         return false;
     }
 
     @Override
     public void remove(K clave) {
+        int pos = clave.hashCode() % capacity;
+        while(tablahash[pos]!= null) {
+            if (tablahash[pos].getKey().equals(clave)) {
+                NodoHash<K, V> nodoABorrar = tablahash[pos];
+            }
+            pos = pos + 1;
+        }
 
     }
 

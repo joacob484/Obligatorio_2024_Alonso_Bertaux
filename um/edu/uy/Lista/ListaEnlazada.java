@@ -23,7 +23,7 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
     }
 
 
-    private void addToBeginning(T value) {
+    public void addToBeginning(T value) {
         if (value != null) {
             Nodo<T> elementToAdd = new Nodo<>(value);
             if (this.primero == null) {
@@ -37,7 +37,7 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         }
     }
 
-    private void addToTheEnd(T value) {
+    public void addToTheEnd(T value) {
         if (value != null) {
 
             Nodo<T> elementToAdd = new Nodo<>(value);
@@ -112,7 +112,7 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
             // Si no es encuentra el valor a eliminar no se realiza nada
         }
     }
-    private T removeLast() { // esta operación remueve el último elemento y retorna el elemento eliminado
+    public T removeLast() { // esta operación remueve el último elemento y retorna el elemento eliminado
         T valueToRemove = null;
 
         if (this.ultimo != null) {
@@ -181,15 +181,6 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         addToTheEnd(element);
     }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
-    public void makeEmpty() {
-
-    }
 
     public Nodo<T> getNode(int posicion) {
         Nodo<T> temp = primero;

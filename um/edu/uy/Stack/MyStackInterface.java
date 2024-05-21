@@ -8,8 +8,5 @@ public interface MyStackInterface<T> {
     void push(T element);
 
 
-    boolean isEmpty ();
-    void makeEmpty();
-
 
 }

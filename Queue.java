@@ -33,7 +33,6 @@ public class Queue <T> implements MyQueueInterface<T>{
     @Override
     public T dequeue() throws EmptyQueueException {
         if (this.ultimo == null) {
-
             throw new EmptyQueueException();
         }
     }
@@ -42,12 +41,10 @@ public class Queue <T> implements MyQueueInterface<T>{
     public boolean contains(T value) {
         boolean contain = false;
         Nodo<T> temp = this.primero;
-
         while (temp != null && !temp.getValue().equals(value)) {
             temp = temp.getNext();
         }
         if (temp != null) {
-
             contain = true;
         }
         return contain;

@@ -10,7 +10,7 @@ public class Queue <T> implements MyQueueInterface<T>{
     public void enqueue(T value) {
        Nodo<T> nodoAgregar;
        nodoAgregar = new Nodo<>(value);
-       lista.add(nodoAgregar.getValue());
+       lista.AddFirst(nodoAgregar.getValue());
     }
 
     @Override

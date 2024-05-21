@@ -53,46 +53,41 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         return null;
     }
 
-    private void agergarPrimero(T value) {
-        if (value != null) {
-
-            Nodo<T> elementToAdd = new Nodo<>(value);
-
-            if (this.primero == null) {
-
-                this.primero = elementToAdd;
-                this.ultimo = elementToAdd;
-
-            } else {
-
-                elementToAdd.setNext(this.primero);
-                this.primero = elementToAdd;
+    public Nodo<T> getNode(int posicion) {
+        Nodo<T> temp = primero;
+        while (temp != null) {
+            for (int i = 0; i < posicion - 1; i = i + 1) {
+                temp = temp.getNext();
             }
-
-        } else {
+            return temp;
         }
+        return null;
     }
-
-    private void addToTheEnd(T value) {
-        if (value != null) {
-
-            Nodo<T> elementToAdd = new Nodo<>(value);
-
-            if (this.primero == null) {
-
-                this.primero = elementToAdd;
-                this.ultimo = elementToAdd;
-
-            } else {
-
-                this.ultimo.setNext(elementToAdd);
-                this.ultimo = elementToAdd;
-            }
-
-        } else {
+    public void AddFirst(T value){
+        Nodo<T> temp = new Nodo<>(value);
+        if (primero != null){
+            temp.setNext(primero);
+            primero.setAnterior(temp);
+            primero = temp;
 
         }
+        Length ++;
+
     }
+
+
+    public void AddLast (T value){
+        Nodo <T> temp = primero;
+        while (temp.getNext() != null){
+            temp = temp.getNext();
+        }
+        Nodo <T> ultimo = new Nodo<>(value);
+        temp.setNext(ultimo);
+        ultimo.setAnterior(temp);
+        Length ++;
+
+    }
+
 
 
 

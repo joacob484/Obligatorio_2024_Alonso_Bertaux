@@ -1,12 +1,10 @@
 public class ListaDoblementeEnlazada <T> implements ListaEnlazadaInterface<T>{
 
     public Nodo <T> primero;
-    public Nodo <T> ultimo;
     public int Length;
 
     public ListaDoblementeEnlazada() {
         this.primero = null;
-        this.ultimo = null;
         Length = 0;
     }
     @Override
@@ -56,6 +54,17 @@ public class ListaDoblementeEnlazada <T> implements ListaEnlazadaInterface<T>{
 
     public int size(){
         return Length;
+    }
+
+    public void AddFirst(T value){
+        Nodo<T> temp = new Nodo<>(value);
+        if (primero != null){
+            temp.setNext(primero);
+            primero.setAnterior(temp);
+            primero = temp;
+        }
+        Length ++;
+
     }
 
 }

@@ -36,19 +36,21 @@ public class Queue <T> implements MyQueueInterface<T>{
 
             throw new EmptyQueueException();
         }
-        T valueToRemove = null;
-
-        valueToRemove = this.ultimo.getValue();
-
-
-
-
-        return valueToRemove;
     }
 
     @Override
     public boolean contains(T value) {
-        return false;
+        boolean contain = false;
+        Nodo<T> temp = this.primero;
+
+        while (temp != null && !temp.getValue().equals(value)) {
+            temp = temp.getNext();
+        }
+        if (temp != null) {
+
+            contain = true;
+        }
+        return contain;
     }
 
     @Override

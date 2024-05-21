@@ -5,6 +5,7 @@ import java.util.Objects;
 public class NodoHash <K,V>{
     private K key;
     private V value;
+
     private NodoHash<K,V> next;
 
 

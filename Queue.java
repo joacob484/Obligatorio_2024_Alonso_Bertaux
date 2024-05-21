@@ -1,46 +1,34 @@
 public class Queue <T> implements MyQueueInterface<T>{
 
-    public Nodo <T> primero;
-    public Nodo <T> ultimo;
+    private ListaDoblementeEnlazada<T> lista;
 
     public Queue() {
-        this.primero = null;
-        this.ultimo = null;
+        this.lista = new ListaDoblementeEnlazada<>();
     }
 
     @Override
     public void enqueue(T value) {
-        if (value != null) {
-
-            Nodo<T> elementToAdd = new Nodo<>(value);
-
-            if (this.primero == null) {
-
-                this.primero = elementToAdd;
-                this.ultimo = elementToAdd;
-
-            } else {
-
-                elementToAdd.setNext(this.primero);
-                this.primero = elementToAdd;
-            }
-
-        } else {
-
-        }
+       Nodo<T> nodoAgregar;
+       nodoAgregar = new Nodo<>(value);
+       lista.add(nodoAgregar.getValue());
     }
 
     @Override
     public T dequeue() throws EmptyQueueException {
-        if (this.ultimo == null) {
+        if(lista.size() == 0){
             throw new EmptyQueueException();
+        }
+        else{
+            Nodo<T> primero = new Nodo<>(lista.get(0));
+            lista.remove(0);
+            return primero.getValue();
         }
     }
 
     @Override
     public boolean contains(T value) {
         boolean contain = false;
-        Nodo<T> temp = this.primero;
+        Nodo<T> temp = new Nodo<>(lista.get(0));
         while (temp != null && !temp.getValue().equals(value)) {
             temp = temp.getNext();
         }
@@ -52,6 +40,6 @@ public class Queue <T> implements MyQueueInterface<T>{
 
     @Override
     public int size() {
-        return 0;
+        return lista.size();
     }
 }

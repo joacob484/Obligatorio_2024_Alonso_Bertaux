@@ -1,3 +1,5 @@
+package um.edu.uy.Queue;
+
 public interface MyQueueInterface<T> {
 
     void enqueue(T value);
@@ -7,4 +9,5 @@ public interface MyQueueInterface<T> {
     boolean contains(T value);
 
     int size();
+    boolean isEmpty();
 }

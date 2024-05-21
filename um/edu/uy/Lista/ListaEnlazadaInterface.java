@@ -1,3 +1,5 @@
+package um.edu.uy.Lista;
+
 public interface ListaEnlazadaInterface<T> {
 
     void add(T value);

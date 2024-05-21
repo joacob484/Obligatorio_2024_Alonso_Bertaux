@@ -1,7 +1,9 @@
-public class Nodo <T>{
+package um.edu.uy;
+
+public class Nodo<T>{
     public T value;
-    private Nodo <T> next;
-    private Nodo <T> anterior;
+    private Nodo<T> next;
+    private Nodo<T> anterior;
 
     public Nodo(T value) {
     }

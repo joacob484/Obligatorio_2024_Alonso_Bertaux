@@ -1,6 +1,8 @@
+package um.edu.uy.ArbolBinario;
+
 import java.util.Objects;
 
-public class NodeBST <K extends Comparable<K>,T> implements MyArbolInterface<K,T>{
+public class NodeBST <K extends Comparable<K>,T> implements MyArbolInterface<K,T> {
 
     K key;
     T data;

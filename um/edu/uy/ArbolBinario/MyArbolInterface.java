@@ -1,3 +1,5 @@
+package um.edu.uy.ArbolBinario;
+
 public interface MyArbolInterface <K,T>{
 
     T find (K key);

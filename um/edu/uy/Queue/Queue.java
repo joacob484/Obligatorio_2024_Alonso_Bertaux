@@ -1,4 +1,8 @@
-public class Queue <T> implements MyQueueInterface<T>{
+package um.edu.uy.Queue;
+
+import um.edu.uy.Lista.ListaDoblementeEnlazada;
+
+public class Queue <T> implements MyQueueInterface<T> {
 
     private ListaDoblementeEnlazada<T> lista;
 
@@ -42,4 +46,13 @@ public class Queue <T> implements MyQueueInterface<T>{
     public int size() {
         return lista.size();
     }
+
+    @Override
+    public boolean isEmpty() {
+        if (this.size() !=0){
+            return true;
+        }
+        return false;
+    }
+
 }

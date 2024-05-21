@@ -1,8 +1,12 @@
+package um.edu.uy.Stack;
+
+import um.edu.uy.Nodo;
+
 import java.util.EmptyStackException;
 
-public class Stack<T> implements MyStackInterface<T>{
+public class Stack<T> implements MyStackInterface<T> {
 
-    private Nodo <T> top = null;
+    private Nodo<T> top = null;
     public Integer Length;
     public Stack(){
         top = null;

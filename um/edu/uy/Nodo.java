@@ -1,11 +1,12 @@
 package um.edu.uy;
 
-public class Nodo<T>{
+public class Nodo<T> {
     public T value;
     private Nodo<T> next;
-    private Nodo<T> anterior;
 
     public Nodo(T value) {
+        this.value = value;
+        this.next = null;
     }
 
 
@@ -25,11 +26,4 @@ public class Nodo<T>{
         this.next = next;
     }
 
-    public Nodo<T> getAnterior() {
-        return anterior;
-    }
-
-    public void setAnterior(Nodo<T> anterior) {
-        this.anterior = anterior;
-    }
 }

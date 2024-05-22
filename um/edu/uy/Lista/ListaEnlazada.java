@@ -22,38 +22,45 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         addToTheEnd(value);
     }
 
-
-    public void addToBeginning(T value) {
+    private void addToBeginning(T value) {
         if (value != null) {
+
             Nodo<T> elementToAdd = new Nodo<>(value);
-            if (this.primero == null) {
+
+            if (this.primero == null) { // si la lista es vacia
+
                 this.primero = elementToAdd;
                 this.ultimo = elementToAdd;
-            } else {
+
+            } else { // en caso de no ser vacia se agrega al comienzo
+
                 elementToAdd.setNext(this.primero);
                 this.primero = elementToAdd;
             }
+
         } else {
+            // si el elemento es vacio se ignora
         }
     }
 
-    public void addToTheEnd(T value) {
+    private void addToTheEnd(T value) {
         if (value != null) {
 
             Nodo<T> elementToAdd = new Nodo<>(value);
 
-            if (this.primero == null) {
+            if (this.primero == null) { // si la lista es vacia
 
                 this.primero = elementToAdd;
                 this.ultimo = elementToAdd;
 
-            } else {
+            } else { // en caso de no ser vacia se agrega al final
 
                 this.ultimo.setNext(elementToAdd);
                 this.ultimo = elementToAdd;
             }
 
         } else {
+            // si el elemento es vacio se ignora
         }
     }
 

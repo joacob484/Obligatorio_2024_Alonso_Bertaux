@@ -16,8 +16,35 @@ public class TestListas {
 
         ListaEnlazadaInterface<Integer> listaPrueba = new ListaEnlazada<>();
 
-        listaPrueba.add(4);
+        listaPrueba.add(1);
         listaPrueba.add(8);
+        listaPrueba.add(3);
+        listaPrueba.add(5);
+
+        assertEquals(4, listaPrueba.size());
+
+        assertEquals(new Integer(1), listaPrueba.get(0));
+
+        assertEquals(new Integer(5), listaPrueba.get(3));
+
+        assertTrue(listaPrueba.contains(5));
+
+        assertFalse(listaPrueba.contains(12));
+
+        listaPrueba.remove(12); // si trata de eliminar un elemento que no existe deja la lista como esta
+
+        assertEquals(4, listaPrueba.size());
+
+        listaPrueba.remove(8);
+        listaPrueba.remove(3);
+        listaPrueba.remove(1);
+
+        assertEquals(1, listaPrueba.size());
+
+        assertNull(listaPrueba.get(2));
+
+        assertEquals(new Integer(5), listaPrueba.get(0));
+
 
 
     }

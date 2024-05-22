@@ -20,34 +20,33 @@ public class TestQueue {
 
         try {
             assertEquals(new Integer(21), queue.dequeue());
-        } catch (EmptyQueueException e) {
+        }
+        catch (EmptyQueueException e) {
             fail(e.getMessage());
         }
 
         assertFalse(queue.contains(21));
-
         assertEquals(2, queue.size());
-
         assertTrue(queue.contains(34));
-
         assertFalse(queue.contains(18));
 
         try {
             assertEquals(new Integer(34), queue.dequeue());
-        } catch (EmptyQueueException e) {
+        }
+        catch (EmptyQueueException e) {
             fail(e.getMessage());
         }
-
         try {
             assertEquals(new Integer(3), queue.dequeue());
-        } catch (EmptyQueueException e) {
+        }
+        catch (EmptyQueueException e) {
             fail(e.getMessage());
         }
-
         try {
             queue.dequeue();
             fail("Se espera excepcion");
-        } catch (EmptyQueueException e) {
+        }
+        catch (EmptyQueueException e) {
             assertTrue(true);
         }
     }

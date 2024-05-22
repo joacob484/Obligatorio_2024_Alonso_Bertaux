@@ -4,8 +4,6 @@ import java.util.Objects;
 
 public class ArbolBinario <K extends Comparable<K>,T> implements MyArbolInterface<K,T>{
 
-
-
     @Override
     public T find(K key) {
         return null;

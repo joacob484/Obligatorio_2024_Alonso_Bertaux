@@ -24,15 +24,12 @@ public class TestListas {
         assertEquals(4, listaPrueba.size());
 
         assertEquals(new Integer(1), listaPrueba.get(0));
-
         assertEquals(new Integer(5), listaPrueba.get(3));
 
         assertTrue(listaPrueba.contains(5));
 
         assertFalse(listaPrueba.contains(12));
-
-        listaPrueba.remove(12); // si trata de eliminar un elemento que no existe deja la lista como esta
-
+        listaPrueba.remove(12);
         assertEquals(4, listaPrueba.size());
 
         listaPrueba.remove(8);
@@ -40,9 +37,7 @@ public class TestListas {
         listaPrueba.remove(1);
 
         assertEquals(1, listaPrueba.size());
-
         assertNull(listaPrueba.get(2));
-
         assertEquals(new Integer(5), listaPrueba.get(0));
 
 

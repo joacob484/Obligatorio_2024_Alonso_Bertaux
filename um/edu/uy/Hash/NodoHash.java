@@ -5,6 +5,7 @@ import java.util.Objects;
 public class NodoHash <K,V>{
     private K key;
     private V value;
+    private boolean borrado;
 
     private NodoHash<K,V> next;
 
@@ -16,6 +17,15 @@ public class NodoHash <K,V>{
     public NodoHash(K key, V value) {
         this.key = key;
         this.value = value;
+        this.borrado=false;
+    }
+
+    public boolean getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(boolean borrado) {
+        this.borrado = borrado;
     }
 
     public void setNext(NodoHash<K, V> next) {

@@ -19,7 +19,7 @@ public int capacity;
         size = 0;
         tablahash = new NodoHash[capacity];
         for (NodoHash<K,V> nodoTemp: oldTable){
-            while(nodoTemp != null){
+            while(nodoTemp != null && nodoTemp.getBorrado() == false){
                 put(nodoTemp.getKey(),nodoTemp.getValue());
                 nodoTemp = nodoTemp.getNext();
             }
@@ -32,7 +32,7 @@ public int capacity;
             resize();
         }
         else{
-            int pos = key.hashCode() % capacity;
+            int pos = HashFunction(key);
             NodoHash<K, V> nodoAgregado = new NodoHash<>(key, value);
             if (tablahash[pos] == null) {
                 tablahash[pos] = nodoAgregado;
@@ -48,7 +48,7 @@ public int capacity;
 
     @Override
     public boolean contains(K key) {
-        int pos = key.hashCode() % capacity;
+        int pos = HashFunction(key);
         while (tablahash[pos] != null){
             if(tablahash[pos].getKey().equals(key)){
                 return true;
@@ -60,13 +60,18 @@ public int capacity;
 
     @Override
     public void remove(K clave) {
-        int pos = clave.hashCode() % capacity;
+        int pos = HashFunction(clave);
         while(tablahash[pos]!= null) {
             if (tablahash[pos].getKey().equals(clave)) {
-                NodoHash<K, V> nodoABorrar = tablahash[pos];
+                tablahash[pos].setBorrado(true);
+                tablahash[pos] = null;
             }
             pos = pos + 1;
         }
+    }
 
+    public int HashFunction(K key){
+        int HashValue = key.hashCode();
+        return Math.abs(HashValue) % capacity;
     }
 }

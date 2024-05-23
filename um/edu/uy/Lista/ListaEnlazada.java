@@ -124,7 +124,6 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
 
         if (this.ultimo != null) {
             valueToRemove = this.ultimo.getValue();
-
             remove(valueToRemove);
         }
 
@@ -163,17 +162,21 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
 
 
     @Override
+    public void push(T value) {
+        addToTheEnd(value);
+    }
+
+    @Override
     public T pop() throws EmptyStackException {
         if (this.ultimo == null) { // si la pila esta vacia
 
             throw new EmptyStackException();
         }
-
         return removeLast();
     }
 
     @Override
-    public T top() throws EmptyStackException {
+    public T top() {
         T valueToReturn = null;
 
         if (this.ultimo != null) {
@@ -181,11 +184,6 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
         }
 
         return valueToReturn;
-    }
-
-    @Override
-    public void push(T element) {
-        addToTheEnd(element);
     }
 
 

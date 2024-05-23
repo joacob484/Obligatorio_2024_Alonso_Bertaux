@@ -3,31 +3,51 @@ package um.edu.uy.Stack;
 import org.junit.Test;
 import um.edu.uy.Lista.ListaEnlazada;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TestStack {
 
-    MyStackInterface<Integer> stackPrueba = new ListaEnlazada<>();
+
 
     @Test
-    public void StackPrueba(){
-        stackPrueba.push(1);
-        stackPrueba.push(3);
-        stackPrueba.push(4);
-        stackPrueba.push(6);
-        stackPrueba.push(7);
-        stackPrueba.push(9);
-        assertEquals(new Integer(9), stackPrueba.top());
-        stackPrueba.pop();
-        assertEquals(new Integer(7), stackPrueba.top());
-        stackPrueba.pop();
-        assertEquals(new Integer(6), stackPrueba.top());
-        stackPrueba.pop();
-        assertEquals(new Integer(4), stackPrueba.top());
-        stackPrueba.pop();
-        assertEquals(new Integer(3), stackPrueba.top());
-        stackPrueba.pop();
-        assertEquals(new Integer(1), stackPrueba.top());
-        stackPrueba.pop();
+    public void StackPrueba() {
+
+        MyStackInterface<Integer> colStack = new ListaEnlazada<>();
+
+        colStack.push(new Integer(2));
+        colStack.push(new Integer(4));
+        colStack.push(new Integer(7));
+
+        assertEquals(new Integer(7), colStack.top());
+
+        colStack.pop();
+
+        assertEquals(new Integer(4), colStack.top());
+
+        try{
+            assertEquals(new Integer(7),colStack.pop());
+        }
+
+        try {
+
+            assertEquals(new Integer(2), colStack.pop());
+
+        } catch (EmptyStackException e) {
+
+            fail(e.getMessage());
+
+        }
+        try {
+
+            colStack.pop();
+
+            fail("El stack deberia estar vacio");
+
+        } catch (EmptyStackException e) {
+
+            assertTrue(true);
+
+        }
     }
+
 }

@@ -1,7 +1,5 @@
 package um.edu.uy.Stack;
-
-import java.util.EmptyStackException;
-
+import um.edu.uy.Stack.EmptyStackException;
 public interface MyStackInterface<T> {
     void push(T value);
 

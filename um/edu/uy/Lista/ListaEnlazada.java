@@ -4,8 +4,7 @@ import um.edu.uy.Nodo;
 import um.edu.uy.Queue.EmptyQueueException;
 import um.edu.uy.Queue.MyQueueInterface;
 import um.edu.uy.Stack.MyStackInterface;
-
-import java.util.EmptyStackException;
+import um.edu.uy.Stack.EmptyStackException;
 
 public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInterface<T>, MyQueueInterface<T>, MyStackInterface<T> {
 
@@ -169,7 +168,6 @@ public class ListaEnlazada<T extends Comparable<T>> implements ListaEnlazadaInte
     @Override
     public T pop() throws EmptyStackException {
         if (this.ultimo == null) { // si la pila esta vacia
-
             throw new EmptyStackException();
         }
         return removeLast();

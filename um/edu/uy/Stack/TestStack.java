@@ -20,12 +20,26 @@ public class TestStack {
 
         assertEquals(new Integer(7), colStack.top());
 
-        colStack.pop();
+        try {
+
+            assertEquals(new Integer(7), colStack.pop());
+
+        } catch (EmptyStackException e) {
+
+            fail(e.getMessage());
+
+        }
 
         assertEquals(new Integer(4), colStack.top());
 
-        try{
-            assertEquals(new Integer(7),colStack.pop());
+        try {
+
+            assertEquals(new Integer(4), colStack.pop());
+
+        } catch (EmptyStackException e) {
+
+            fail(e.getMessage());
+
         }
 
         try {

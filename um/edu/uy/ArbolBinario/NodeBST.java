@@ -47,14 +47,14 @@ public class NodeBST <T extends Comparable<T>> {
 
     }
 
-    public NodeBST<T> remove(T oElement) {
+    public NodeBST<T> removeS(T oElement) {
         int nValue = ((Comparable<T>) oElement).compareTo(value);
 
         if (nValue > 0) {
 
             if (right != null) {
 
-                right = right.remove(oElement);
+                right = right.removeS(oElement);
 
             }
 
@@ -62,7 +62,7 @@ public class NodeBST <T extends Comparable<T>> {
 
             if (left != null) {
 
-                left = left.remove(oElement);
+                left = left.removeS(oElement);
 
             }
         } else if (left != null && right != null) {
@@ -71,7 +71,7 @@ public class NodeBST <T extends Comparable<T>> {
 
             value = right.findMin();
 
-            right = right.remove(value);
+            right = right.removeS(value);
 
         } else {
 

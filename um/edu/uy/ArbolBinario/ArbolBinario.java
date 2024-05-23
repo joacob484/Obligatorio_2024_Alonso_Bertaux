@@ -31,7 +31,7 @@ public class ArbolBinario <T extends Comparable<T>> implements MyArbolInterface<
     @Override
     public void remove(T oElement) {
         if (root != null) {
-            root.remove(oElement);
+            root.removeS(oElement);
         }
     }
 

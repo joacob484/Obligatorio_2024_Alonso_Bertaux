@@ -1,51 +1,188 @@
 package um.edu.uy.ArbolBinario;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class NodeBST <K,T> {
+public class NodeBST <T extends Comparable<T>> {
 
-    K key;
-    T data;
+    private T value;
 
-    NodeBST<K,T> leftchild;
-    NodeBST<K,T> rightchild;
+    private NodeBST<T> left;
 
-    public NodeBST(K key, T data) {
-        this.key = key;
-        this.data = data;
+    private NodeBST<T> right;
+
+    public NodeBST(T oValue) {
+        this.value = oValue;
     }
 
-    public K getKey() {
-        return key;
+    public void add(T oElement) {
+        int nValue = oElement.compareTo(value);
+        NodeBST<T> oElementToAdd = new NodeBST<>(oElement);
+
+        if (nValue > 0) {
+
+            if (right == null) {
+
+                right = oElementToAdd;
+
+            } else {
+
+                right.add(oElement);
+
+            }
+
+        } else {
+
+            if (left == null) {
+
+                left = oElementToAdd;
+
+            } else {
+
+                left.add(oElement);
+
+            }
+        }
+
     }
 
-    public void setKey(K key) {
-        this.key = key;
+    public NodeBST<T> remove(T oElement) {
+        int nValue = ((Comparable<T>) oElement).compareTo(value);
+
+        if (nValue > 0) {
+
+            if (right != null) {
+
+                right = right.remove(oElement);
+
+            }
+
+        } else if (nValue < 0) {
+
+            if (left != null) {
+
+                left = left.remove(oElement);
+
+            }
+        } else if (left != null && right != null) {
+
+            // Encontre el elemento a eliminar
+
+            value = right.findMin();
+
+            right = right.remove(value);
+
+        } else {
+
+            if (left != null) {
+
+                return left;
+
+            } else {
+
+                return right;
+
+            }
+
+        }
+
+        return this;
     }
 
-    public T getData() {
-        return data;
+    public List<T> inOrderTraverse() {
+        List<T> colList = new ArrayList<T>();
+
+        if (left != null) {
+
+            colList.addAll(left.inOrderTraverse());
+
+        }
+
+        colList.add(value);
+
+        if (right != null) {
+
+            colList.addAll(right.inOrderTraverse());
+
+        }
+
+        return colList;
     }
 
-    public void setData(T data) {
-        this.data = data;
+    public List<T> preOrderTraverse() {
+        List<T> colList = new ArrayList<T>();
+
+        colList.add(getValue());
+
+        if (left != null) {
+
+            colList.addAll(left.preOrderTraverse());
+
+        }
+
+        if (right != null) {
+
+            colList.addAll(right.preOrderTraverse());
+
+        }
+
+        return colList;
     }
 
-    public NodeBST<K, T> getLeftchild() {
-        return leftchild;
+    public List<T> postOrderTraverse() {
+        List<T> colList = new ArrayList<T>();
+
+        if (left != null) {
+
+            colList.addAll(left.preOrderTraverse());
+
+        }
+
+        if (right != null) {
+
+            colList.addAll(right.preOrderTraverse());
+
+        }
+
+        colList.add(getValue());
+
+        return colList;
     }
 
-    public void setLeftchild(NodeBST<K, T> leftchild) {
-        this.leftchild = leftchild;
+    public T getValue() {
+        return value;
     }
 
-    public NodeBST<K, T> getRightchild() {
-        return rightchild;
+    public void setValue(T value) {
+        this.value = value;
     }
 
-    public void setRightchild(NodeBST<K, T> rightchild) {
-        this.rightchild = rightchild;
+    public NodeBST<T> getLeft() {
+        return left;
     }
 
+    public void setLeft(NodeBST<T> left) {
+        this.left = left;
+    }
 
+    public NodeBST<T> getRight() {
+        return right;
+    }
+
+    public void setRigth(NodeBST<T> rigth) {
+        this.right = rigth;
+    }
+
+    public T findMin() {
+        T oReturn = value;
+
+        if (left != null) {
+
+            oReturn = left.findMin();
+
+        }
+
+        return oReturn;
+    }
 }

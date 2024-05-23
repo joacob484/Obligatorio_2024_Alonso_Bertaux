@@ -1,8 +1,20 @@
 package um.edu.uy.ArbolBinario;
 
-public interface MyArbolInterface <K,T>{
+import java.util.List;
 
-    T find (K key);
-    void inseert(K key, T data);
-    void delete(K key);
+public interface MyArbolInterface <T>{
+
+    void add(T oElement);
+
+    void remove(T oElement);
+
+    boolean contains(T oElement);
+
+    T find(T oElement);
+
+    List<T> preOrder();
+
+    List<T> posOrder();
+
+    List<T> inOrder();
 }

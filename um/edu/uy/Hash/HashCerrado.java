@@ -13,47 +13,48 @@ public int capacity;
         this.size = 0;
     }
 
-    private void resize(){
-        NodoHash<K,V>[] oldTable = tablahash;
+    private void resize() {
+        NodoHash<K, V>[] oldTable = tablahash;
         capacity = 2 * capacity;
         size = 0;
         tablahash = new NodoHash[capacity];
-        for (NodoHash<K,V> nodoTemp: oldTable){
-            while(nodoTemp != null && nodoTemp.getBorrado() == false){
-                put(nodoTemp.getKey(),nodoTemp.getValue());
-                nodoTemp = nodoTemp.getNext();
+        for (NodoHash<K, V> nodoTemp : oldTable) {
+            if(nodoTemp != null ){
+                put(nodoTemp.getKey(), nodoTemp.getValue());
             }
         }
     }
 
     @Override
     public void put(K key, V value) {
-        if((double)(size + 1) >= capacity * LoadFactor) {
+        int pos = HashFunction(key);
+        NodoHash<K, V> nodoAgregado = new NodoHash<>(key, value);
+        if (tablahash[pos] == null) {
+            tablahash[pos] = nodoAgregado;
+        } else {
+            while (tablahash[pos] != null) {
+                if(pos == capacity-1){
+                    pos=0;
+                }
+                pos = pos + 1;
+            }
+            tablahash[pos] = nodoAgregado;
+        }
+        size ++;
+        if((size) >= (int)(capacity * LoadFactor)) {
             resize();
         }
-        else{
-            int pos = HashFunction(key);
-            NodoHash<K, V> nodoAgregado = new NodoHash<>(key, value);
-            if (tablahash[pos] == null) {
-                tablahash[pos] = nodoAgregado;
-            } else {
-                NodoHash<K, V> nodoTemp = tablahash[pos];
-                while (nodoTemp.getNext() != null) {
-                    nodoTemp = nodoAgregado.getNext();
-                }
-                nodoTemp.setNext(nodoAgregado);
-            }
-        }
+
     }
 
     @Override
     public boolean contains(K key) {
         int pos = HashFunction(key);
-        while (tablahash[pos] != null){
+        while (pos<capacity && tablahash[pos] != null){
             if(tablahash[pos].getKey().equals(key)){
                 return true;
             }
-            pos = pos +1;
+            pos =pos +1;
         }
         return false;
     }
@@ -63,11 +64,11 @@ public int capacity;
         int pos = HashFunction(clave);
         while(tablahash[pos]!= null) {
             if (tablahash[pos].getKey().equals(clave)) {
-                tablahash[pos].setBorrado(true);
                 tablahash[pos] = null;
             }
-            pos = pos + 1;
+            pos = (pos + 1)%capacity;
         }
+        size --;
     }
 
     public int HashFunction(K key){

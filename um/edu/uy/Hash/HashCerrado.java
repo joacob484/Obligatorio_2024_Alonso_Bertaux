@@ -1,5 +1,5 @@
 package um.edu.uy.Hash;
-
+import java.lang.Math;
 public class HashCerrado<K extends Comparable<K>,V> implements MyHashInterface<K,V> {
 private NodoHash<K,V>[] tablahash;
 private int size;
@@ -8,7 +8,7 @@ private double LoadFactor =0.79;
 public int capacity;
 
     public HashCerrado() {
-        this.capacity = 0;
+        this.capacity = 1;
         this.tablahash = new NodoHash[capacity];
         this.size = 0;
     }

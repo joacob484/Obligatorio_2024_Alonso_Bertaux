@@ -8,7 +8,7 @@ private double LoadFactor =0.79;
 public int capacity;
 
     public HashCerrado() {
-        this.capacity = 0;
+        this.capacity = 1;
         this.tablahash = new NodoHash[capacity];
         this.size = 0;
     }
@@ -18,12 +18,11 @@ public int capacity;
         capacity = 2 * capacity;
         size = 0;
         tablahash = new NodoHash[capacity];
-        for (NodoHash<K,V> nodoTemp: oldTable){
-            while(nodoTemp != null && nodoTemp.getBorrado() == false){
-                put(nodoTemp.getKey(),nodoTemp.getValue());
+        for (NodoHash<K,V> nodoTemp: oldTable)
+            while (nodoTemp != null && !nodoTemp.getBorrado()) {
+                put(nodoTemp.getKey(), nodoTemp.getValue());
                 nodoTemp = nodoTemp.getNext();
             }
-        }
     }
 
     @Override

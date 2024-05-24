@@ -21,12 +21,12 @@ public class TestHash {
         HashPrueba.put(9,9);
         HashPrueba.put(2,2);
         HashPrueba.put(17,17);
-        assertEquals(4, HashPrueba.contains(4));
-        assertEquals(7, HashPrueba.contains(7));
-        assertEquals(5, HashPrueba.contains(5));
-        assertEquals(13, HashPrueba.contains(13));
-        assertEquals(2, HashPrueba.contains(2));
-        assertEquals(17, HashPrueba.contains(17));
+        assertEquals(true, HashPrueba.contains(4));
+        assertEquals(true, HashPrueba.contains(7));
+        assertEquals(true, HashPrueba.contains(5));
+        assertEquals(true, HashPrueba.contains(13));
+        assertEquals(true, HashPrueba.contains(2));
+        assertEquals(true, HashPrueba.contains(17));
         HashPrueba.remove(2);
         HashPrueba.remove(17);
         HashPrueba.remove(5);

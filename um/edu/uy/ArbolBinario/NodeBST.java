@@ -4,185 +4,85 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class NodeBST <T extends Comparable<T>> {
+public class NodeBST <K, T> {
+    private K key;
+    private T data;
+    private NodeBST<K, T> leftChild;
+    private NodeBST<K, T> rightChild;
 
-    private T value;
-
-    private NodeBST<T> left;
-
-    private NodeBST<T> right;
-
-    public NodeBST(T oValue) {
-        this.value = oValue;
+    public NodeBST(K key, T data){
+        this.key = key;
+        this.data = data;
     }
 
-    public void add(T oElement) {
-        int nValue = oElement.compareTo(value);
-        NodeBST<T> oElementToAdd = new NodeBST<>(oElement);
+    public NodeBST<K, T> find(K key){
+        if (this.getKey() == key){
+            return this;
+        }
+        NodeBST<K, T> result = null;
+        if (this.getLeftChild() != null){
+            result = this.getLeftChild().find(key);
+        }
+        if (result == null && this.getRightChild() != null){
+            result = this.getRightChild().find(key);
+        }
+        return result;
+    }
 
-        if (nValue > 0) {
-
-            if (right == null) {
-
-                right = oElementToAdd;
-
-            } else {
-
-                right.add(oElement);
-
-            }
-
-        } else {
-
-            if (left == null) {
-
-                left = oElementToAdd;
-
-            } else {
-
-                left.add(oElement);
-
-            }
+    public NodeBST<K, T> findParent(K key){
+        if (this.getKey() == key){
+            return this;
+        }
+        NodeBST<K, T> result = null;
+        if (this.getLeftChild() != null){
+            result = this.getLeftChild().findParent(key);
+        }
+        if (result == null && this.getRightChild() != null){
+            result = this.getRightChild().findParent(key);
         }
 
-    }
-
-    public NodeBST<T> removeS(T oElement) {
-        int nValue = ((Comparable<T>) oElement).compareTo(value);
-
-        if (nValue > 0) {
-
-            if (right != null) {
-
-                right = right.removeS(oElement);
-
-            }
-
-        } else if (nValue < 0) {
-
-            if (left != null) {
-
-                left = left.removeS(oElement);
-
-            }
-        } else if (left != null && right != null) {
-
-            // Encontre el elemento a eliminar
-
-            value = right.findMin();
-
-            right = right.removeS(value);
-
-        } else {
-
-            if (left != null) {
-
-                return left;
-
-            } else {
-
-                return right;
-
-            }
-
+        if (result != null && result.getKey() == key){
+            result = this;
         }
 
-        return this;
+        return result;
     }
 
-    public List<T> inOrderTraverse() {
-        List<T> colList = new ArrayList<T>();
 
-        if (left != null) {
-
-            colList.addAll(left.inOrderTraverse());
-
-        }
-
-        colList.add(value);
-
-        if (right != null) {
-
-            colList.addAll(right.inOrderTraverse());
-
-        }
-
-        return colList;
+    public K getKey() {
+        return key;
     }
 
-    public List<T> preOrderTraverse() {
-        List<T> colList = new ArrayList<T>();
-
-        colList.add(getValue());
-
-        if (left != null) {
-
-            colList.addAll(left.preOrderTraverse());
-
-        }
-
-        if (right != null) {
-
-            colList.addAll(right.preOrderTraverse());
-
-        }
-
-        return colList;
+    public void setKey(K key) {
+        this.key = key;
     }
 
-    public List<T> postOrderTraverse() {
-        List<T> colList = new ArrayList<T>();
-
-        if (left != null) {
-
-            colList.addAll(left.preOrderTraverse());
-
-        }
-
-        if (right != null) {
-
-            colList.addAll(right.preOrderTraverse());
-
-        }
-
-        colList.add(getValue());
-
-        return colList;
+    public T getData() {
+        return data;
     }
 
-    public T getValue() {
-        return value;
+    public void setData(T data) {
+        this.data = data;
     }
 
-    public void setValue(T value) {
-        this.value = value;
+    public NodeBST<K, T> getLeftChild() {
+        return leftChild;
     }
 
-    public NodeBST<T> getLeft() {
-        return left;
+    public void setLeftChild(NodeBST<K, T> leftChild) {
+        this.leftChild = leftChild;
     }
 
-    public void setLeft(NodeBST<T> left) {
-        this.left = left;
+    public NodeBST<K, T> getRightChild() {
+        return rightChild;
     }
 
-    public NodeBST<T> getRight() {
-        return right;
+    public void setRightChild(NodeBST<K, T> rightChild) {
+        this.rightChild = rightChild;
     }
 
-    public void setRigth(NodeBST<T> rigth) {
-        this.right = rigth;
-    }
-
-    public T findMin() {
-        T oReturn = value;
-
-        if (left != null) {
-
-            oReturn = left.findMin();
-
-        }
-
-        return oReturn;
+    public boolean equals(NodeBST<K, T> node) {
+        return node.getKey().equals(this.key);
     }
 }
+
